@@ -1,8 +1,7 @@
+<head>
 
-
-
-
-
+</head>
+<body>
 <h1>{{title}}</h1>
 <p>Welcome to the fast {{title}}</p>
 <p>{{des}}</p>
@@ -10,39 +9,72 @@
 
 <h1>Test</h1>
 
+<table id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Extn.</th>
+        <th>Start date</th>
+        <th>Salary</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Extn.</th>
+        <th>Start date</th>
+        <th>Salary</th>
+    </tr>
+    </tfoot>
+</table>
+
 <script>
 
 
 
 
-    $.ajax({
+$.ajax({
                 method: "GET",
-                url: "https://data.cityofnewyork.us/resource/9w7m-hzhe.json",
+                url: "https://data.cityofnewyork.us/resource/9w7m-hzhe.json/?",
                 data: {
 
-                    "$limit" : 5000,
+                    "$limit" : 500,
                     "$$app_token" : "0iDqpBVJpxoL57GWfnkPn7qZr"
 
-                }
-            })
-            .done(function( data ) {
-                alert("Retrieved " + data.length + " records from the dataset!");
-                console.log(data);
+                }, success: function(data){
 
-            });
+       /* console.log(data);*/
+
+        data.forEach(function(element){
+
+            console.log("Boro:" + ""+ element.boro )
+
+            if (element.grade == undefined){
+
+                console.log("No Grade available Yet for this Place")
+            }
+
+            else
+
+            {
+
+                console.log("Inspection Grade:" + "" + element.grade)
+            }
+        })
+    }
+
+
+
+
+
+
+            })
 
 
 </script>
 
-<div>
-
-    <table>
-
-
-
-    </table>
-
-
-</div>
-
-<h>Love</h>
+</body>
