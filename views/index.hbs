@@ -12,17 +12,7 @@
 <table id="example" class="table-bordered" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th >Boro{{data.boro}}</th>
-        <th>Building</th>
-        <th>Cuisine Description</th>
-        <th>DBA</th>
-        <th >Grade</th>
-        <th >Grade Date</th>
-        <th >Inspection Date</th>
-        <th >Phone</th>
-        <th>Street</th>
-        <th >Violation Description</th>
-        <th >Zipcode</th>
+
     </tr>
     </thead>
     <tfoot>
@@ -59,32 +49,10 @@ $.ajax({
 
                 }, success: function(data){
 
-        console.log(data);
-
-        data.forEach(function(element){
-
-
-
-            if (element.grade == undefined){
-
-                console.log("No Grade available Yet for this Place")
-            }
-
-            else
-
-            {
-
-                console.log("Inspection Grade:" + "" + element.grade)
-            }
-        })
+                console.log(data)
     }
+});
 
-
-
-
-
-
-            })
 
 
 </script>
