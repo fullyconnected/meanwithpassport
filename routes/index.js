@@ -3,9 +3,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Entelijant Datttta',
+  res.render('index', { title: 'NYC Food Inspection Results',
 
-  des: "This is the site that I'm building"
+  des: "Stay away from Nasty Places"
 
   });
 });

@@ -3,31 +3,43 @@
 </head>
 <body>
 <h1>{{title}}</h1>
-<p>Welcome to the fast {{title}}</p>
+<p> {{title}}</p>
 <p>{{des}}</p>
 <p id ="dad"></p>
 
 <h1>Test</h1>
 
-<table id="example" class="display" cellspacing="0" width="100%">
+<table id="example" class="table-bordered" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Position</th>
-        <th>Office</th>
-        <th>Extn.</th>
-        <th>Start date</th>
-        <th>Salary</th>
+        <th >Boro{{data.boro}}</th>
+        <th>Building</th>
+        <th>Cuisine Description</th>
+        <th>DBA</th>
+        <th >Grade</th>
+        <th >Grade Date</th>
+        <th >Inspection Date</th>
+        <th >Phone</th>
+        <th>Street</th>
+        <th >Violation Description</th>
+        <th >Zipcode</th>
     </tr>
     </thead>
     <tfoot>
     <tr>
-        <th>Name</th>
-        <th>Position</th>
-        <th>Office</th>
-        <th>Extn.</th>
-        <th>Start date</th>
-        <th>Salary</th>
+        <td id = "row_boro"></td>
+        <td id = "row_building"></td>
+        <td id = "row_cusine_description"></td>
+        <td id = "row_dba"></td>
+        <td id = "row_grade"></td>
+        <td id = "row_grade_date"></td>
+        <td id = "row_inspection_date"></td>
+        <td id = "row_phone"></td>
+        <td  id = "row_street"></td>
+        <td id = "violation_decription"></td>
+        <td id = "zipcode"></td>
+
+
     </tr>
     </tfoot>
 </table>
@@ -42,16 +54,16 @@ $.ajax({
                 url: "https://data.cityofnewyork.us/resource/9w7m-hzhe.json/?",
                 data: {
 
-                    "$limit" : 500,
+                    "$limit" : 3,
                     "$$app_token" : "0iDqpBVJpxoL57GWfnkPn7qZr"
 
                 }, success: function(data){
 
-       /* console.log(data);*/
+        console.log(data);
 
         data.forEach(function(element){
 
-            console.log("Boro:" + ""+ element.boro )
+
 
             if (element.grade == undefined){
 
