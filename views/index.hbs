@@ -5,8 +5,12 @@
 <h1>{{title}}</h1>
 <p> {{title}}</p>
 <p>{{des}}</p>
-<p id ="dad"></p>
-
+<p id ="one">Test</p>
+<p id ="2"></p>
+<p id ="3"></p>
+<div id = "nii">
+    <div id="output"></div>
+</div>
 <h1>Test</h1>
 
 <table id="example" class="table-bordered" cellspacing="0" width="100%">
@@ -40,18 +44,62 @@
 
 
 $.ajax({
-                method: "GET",
-                url: "https://data.cityofnewyork.us/resource/9w7m-hzhe.json/?",
-                data: {
 
-                    "$limit" : 3,
-                    "$$app_token" : "0iDqpBVJpxoL57GWfnkPn7qZr"
+    type: "GET",
+    url: "https://data.cityofnewyork.us/resource/9w7m-hzhe.json",
+    data: {
 
-                }, success: function(data){
+        "$limit":5 ,
+        "$$app_token": "0iDqpBVJpxoL57GWfnkPn7qZr"
+    }}).done(function( data ) {
 
-                console.log(data)
-    }
+   data.forEach(function(element){
+
+
+       var crele = document.createElement("p");
+       var space = "   ";
+       var tablestart = "<table>";
+       var tableend = "</table>";
+       var trstart = "<tr>";
+       var trend = "</tr>";
+       var boro = tablestart+ trstart+ element.boro+ trend + space +  element.dba + space + element.grade + space + element.phone +space + element.violation_description + space + element.zipcode + tableend;
+
+       crele.append(boro);
+
+       var output = document.getElementById("output");
+       output.innerHTML = crele;
+
+       console.log(crele)
+
+
+
+     /*  for (var i = 0; i < data.length;  i++){
+
+
+
+
+
+
+       }*/
+
+
+   })
+
+
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
