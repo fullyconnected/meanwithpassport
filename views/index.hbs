@@ -32,21 +32,11 @@
                 </ul>
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
-                        <input id = "results-from-search" type="text" class="form-control" placeholder="Search">
+                        <input id = "results-from-search" type="text" class="form-control" placeholder="Enter Zip Code">
                     </div>
                     <button id = "search_submit" type="submit" class="btn btn-default">Submit</button>
                 </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
+
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -72,22 +62,27 @@
 <script>
 
 
+
+    $("#search_submit").click(function() {
+
+        var zip = $('#results-from-search').val();
+
     $.ajax({
 
 
 
     type: "GET",
-    url: "https://data.cityofnewyork.us/resource/9w7m-hzhe.json?zipcode=10018",
+    url: "https://data.cityofnewyork.us/resource/9w7m-hzhe.json?",
     data: {
-
-        "$limit":5 ,
-        "$$app_token": "0iDqpBVJpxoL57GWfnkPn7qZr"
+        "$limit":150 ,
+        "$$app_token": "0iDqpBVJpxoL57GWfnkPn7qZr",
+        "zipcode":$('#results-from-search').val()
     },
 
 
 
 }).done(function( data ) {
-
+        console.log(zip)
         var html = '';
 
    data.forEach(function(element){
@@ -116,7 +111,9 @@
         $('#dict').html(html);
 });
 
+        return false;
 
+    });
 
 
 
