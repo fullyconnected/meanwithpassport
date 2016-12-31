@@ -60,54 +60,19 @@
 
 
 <h3>{{title}}</h3>
+<div id="dict">
 
 
 
-<h1></h1>
-
-<ul class="list-group">
-    <li class="list-group-item">Business Name</li>
-    <li class="list-group-item">Address</li>
-    <li class="list-group-item">Phone</li>
-    <li class="list-group-item">Rating</li>
-    <li class="list-group-item">Inspection Date</li>
-</ul>
+</div>
 
 
-<table id="example" class="table-bordered" cellspacing="0" width="100%">
-    <thead>
-    <tr>
 
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <td id = "row_boro"></td>
-        <td id = "row_building"></td>
-        <td id = "row_cusine_description"></td>
-        <td id = "row_dba"></td>
-        <td id = "row_grade"></td>
-        <td id = "row_grade_date"></td>
-        <td id = "row_inspection_date"></td>
-        <td id = "row_phone"></td>
-        <td  id = "row_street"></td>
-        <td id = "violation_decription"></td>
-        <td id = "zipcode"></td>
-
-
-    </tr>
-    </tfoot>
-</table>
 
 <script>
 
 
-
-
-
-
-
-$.ajax({
+    $.ajax({
 
 
 
@@ -123,49 +88,32 @@ $.ajax({
 
 }).done(function( data ) {
 
+        var html = '';
+
    data.forEach(function(element){
 
-       $('#search_submit').click(function(){
+       html += '<p>' ;
+       html += element.boro;
+       html += '</p>'
+       html += '<p>' ;
+       html += element.dba;
+       html += '</p>'
+       html += '<p>' ;
+       html += element.phone;
+       html += '</p>'
+       html += '<p>' ;
+       html += element.street;
+       html += '</p>'
+       html += '<p>' ;
+       html += element.violation_description;
+       html += '</p>'
+       html += '<hr>'
+       html += '</hr>'
 
-           var val = $('#results-from-search').val();
-
-           console.log(val);
-
-
-
-       });
-
-
-       var crele = document.createElement("p");
-       var space = "   ";
-       var tablestart = "<table>";
-       var tableend = "</table>";
-       var trstart = "<tr>";
-       var trend = "</tr>";
-       var boro = tablestart+ trstart+ element.boro+ trend + space +  element.dba + space + element.grade + space + element.phone +space + element.violation_description + space + element.zipcode + tableend;
-
-       crele.append(boro);
-
-
-
-       console.log(crele)
-
-
-
-     /*  for (var i = 0; i < data.length;  i++){
-
-
-
-
-
-
-       }*/
-
+       console.log(element);
 
    })
-
-
-
+        $('#dict').html(html);
 });
 
 
